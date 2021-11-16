@@ -1,7 +1,7 @@
 import { StarIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 
-function Review({ review }) {
+export default function Review({ review }) {
   return (
     <figure className="hover:border-l-2 space-y-5 hover:border-yellow-500 flex flex-col rounded-tr-3xl bg-gray-200 hover:bg-white p-3">
       <div className="flex justify-between">
@@ -25,4 +25,3 @@ function Review({ review }) {
   );
 }
 
-export default Review;

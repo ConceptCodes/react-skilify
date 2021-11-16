@@ -85,6 +85,17 @@ const badges = [
 
 const reviews = ["TheMadBrains", "UI/UX Designer"];
 
+const tidbits = [
+  {
+    title: 'become a teacher',
+    btn: 'apply as a teacher'
+  },
+  {
+    title: 'consector for business',
+    btn: 'get skilify for business'
+  }
+]
+
 export default function Home() {
   return (
     <div>
@@ -114,7 +125,7 @@ export default function Home() {
                 </div>
               </form>
             </div>
-            <div class="flex">
+            <div className="flex">
               <div className="z-10">
                 <Image
                   className="rounded-2xl"
@@ -123,7 +134,7 @@ export default function Home() {
                   height={300}
                 />
               </div>
-              <div className="border w-full h-full z-0 border-black"></div>
+              <div className="w-full rounded-2xl h-full z-0 border-red-700 border-4"></div>
             </div>
           </article>
         </section>
@@ -183,9 +194,9 @@ export default function Home() {
             </p>
             <ul>
               {badges.map((x, index) => (
-                <div className="flex items-center space-x-4">
+                <div key={index} className="flex items-center space-x-4">
                   <BadgeCheckIcon className="text-green-600 h-5" />
-                  <li className="capitalize" key={index}>
+                  <li className="capitalize" >
                     {x}
                   </li>
                 </div>
@@ -208,11 +219,11 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <h1 className="text-4xl">What our students have to say</h1>
             <div className="flex space-x-3">
-              <div className="flex items-center h-10 w-10 justify-center bg-white">
-                <ArrowLeftIcon className="text-gray-500 h-5 hover:text-yellow-500" />
+              <div className="flex group items-center h-10 w-10 justify-center bg-white">
+                <ArrowLeftIcon className="text-gray-500 h-5 group-hover:text-yellow-500" />
               </div>
-              <div className="flex items-center h-10 w-10  justify-center bg-white">
-                <ArrowRightIcon className="text-gray-500 h-5 hover:text-yellow-500" />
+              <div className="flex group items-center h-10 w-10  justify-center bg-white">
+                <ArrowRightIcon className="text-gray-500 h-5 group-hover:text-yellow-500" />
               </div>
             </div>
           </div>
@@ -226,19 +237,35 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <h1 className="text-4xl">Trusted by our awesome partners</h1>
             <div className="flex space-x-3">
-              <div className="flex items-center h-10 w-10 justify-center bg-gray-300">
-                <ArrowLeftIcon className="text-gray-500 h-5 hover:text-yellow-500" />
+              <div className="flex group items-center h-10 w-10 justify-center bg-gray-300">
+                <ArrowLeftIcon className="text-gray-500 h-5 group-hover:text-yellow-500" />
               </div>
-              <div className="flex items-center h-10 w-10  justify-center bg-gray-300">
-                <ArrowRightIcon className="text-gray-500 h-5 hover:text-yellow-500" />
+              <div className="flex group items-center h-10 w-10  justify-center bg-gray-300">
+                <ArrowRightIcon className="text-gray-500 h-5 group-hover:text-yellow-500" />
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-6 gap-5">
+          <div className="flex items-center justify-center grid-cols-6 gap-5">
             {[...Array(5)].map((index) => (
-              <div key={index} className="bg-gray-300 w-40 h-20 " />
+              <div key={index} className="flex bg-white hover:filter items-center justify-center hover:drop-shadow-2xl w-40 h-20 ">BRAND</div>
             ))}
           </div>
+        </section>
+        <section className="flex justify-center grid-cols-3 gap-4 bg-red-200 items-center p-20">
+          {
+            tidbits.map((x , index) => (
+              <figure key={index} className="flex items-start space-x-4 bg-white p-4 mx-w-lg">
+                <Image className="rounded-full" src="https://via.placeholder.com/50" width={50} height={50} />
+                <div className="flex flex-col space-y-3">
+                  <h1 className="font-medium text-2xl capitalize">{x.title}</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                  <button className="bg-red-500 rounded-lg w-48 text-white p-2">
+                  {x.btn}
+                </button>
+                </div>
+              </figure>
+            ))
+          }
         </section>
       </main>
       <Footer />

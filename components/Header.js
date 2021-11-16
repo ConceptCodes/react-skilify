@@ -2,7 +2,7 @@ import { ChevronDownIcon, AcademicCapIcon, ShoppingCartIcon, SearchIcon } from "
 
 const navItems = ["home", "pages", "courses", "features", "blog", "shop"];
 
-function Header() {
+export default function Header() {
   return (
     <nav className="flex mx-10 justify-between">
       <div className="flex items-center space-x-5">
@@ -29,4 +29,3 @@ function Header() {
   );
 }
 
-export default Header;

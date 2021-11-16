@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { StarIcon, PlayIcon, EyeIcon } from '@heroicons/react/outline'
 
-function Course({ course }) {
+export default function Course({ course }) {
     return (
         <figure className="bg-white rounded flex flex-col space-y-5 p-5">
             <Image className="rounded " src="https://via.placeholder.com/200" width={275} height={250} />
@@ -36,5 +36,3 @@ function Course({ course }) {
         </figure>
     )
 }
-
-export default Course

@@ -1,9 +1,11 @@
+import dynamic from 'next/dynamic'
 
-function DynamicIcon({ icon })  {
-    console.log(icon)
-    // const { icon } = props
-    // const TheIcon = icon
-    return <TheIcon {...icon} />
-  }
+export default function DynamicIcon(props) {
+  const Icon = dynamic(() => import('@heroicons/react/solid').then((mod) => mod[props.icon]))
 
-export default DynamicIcon
+  return (
+    <>
+      <Icon />
+    </>
+  )
+}
