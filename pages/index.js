@@ -1,82 +1,247 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Image from "next/image";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Course from "../components/cards/Course";
+import Category from "../components/cards/Category";
+import Review from "../components/cards/Review";
+import {
+  SearchIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+} from "@heroicons/react/solid";
+import {
+  HeartIcon,
+  SpeakerPhoneIcon,
+  CameraIcon,
+  ColorSwatchIcon,
+  WifiIcon,
+  ExternalLinkIcon,
+  DesktopComputerIcon,
+  BriefcaseIcon,
+  BadgeCheckIcon,
+} from "@heroicons/react/outline";
+
+const courses = [
+  {
+    title: "everything you need to know about business",
+  },
+  {
+    title: "statisics data science and business analyst",
+  },
+  {
+    title: "AWS certified solutions architect associate",
+  },
+];
+
+const categories = [
+  {
+    title: "design",
+    color: "purple",
+    icon: ColorSwatchIcon,
+  },
+  {
+    title: "development",
+    color: "orange",
+    icon: DesktopComputerIcon,
+  },
+  {
+    title: "IT & software",
+    color: "blue",
+    icon: WifiIcon,
+  },
+  {
+    title: "business",
+    color: "green",
+    icon: BriefcaseIcon,
+  },
+  {
+    title: "marketing",
+    color: "green",
+    icon: SpeakerPhoneIcon,
+  },
+  {
+    title: "photography",
+    color: "blue",
+    icon: CameraIcon,
+  },
+  {
+    title: "health & care",
+    color: "orange",
+    icon: HeartIcon,
+  },
+  {
+    title: "technology",
+    color: "purple",
+    icon: ExternalLinkIcon,
+  },
+];
+
+const badges = [
+  "free ebook, video & consolation",
+  "top instructors from around world",
+  "top courses for your team",
+];
+
+const reviews = ["TheMadBrains", "UI/UX Designer"];
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Skilify</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
+      <main className="flex flex-col">
+        <section className="bg-red-100 space-y-10 p-10">
+          <Header />
+          <article className="flex mx-10 justify-between">
+            <div className="max-w-lg space-y-5">
+              <h1 className="text-6xl font-medium">
+                Turn your ambition into a success story
+              </h1>
+              <p className="text-gray-500">
+                Choose from over 100,000 online video courses with new additions
+                published every month.
+              </p>
+              <form className="flex">
+                <input
+                  className="p-5 flex flex-grow h-10 w-50 bg-white rounded-l-lg text-gray-500"
+                  placeholder="Search your favorite course"
+                ></input>
+                <div className="flex items-center justify-center rounded-r-lg bg-red-600 h-10 w-20">
+                  <SearchIcon className="text-white h-5" />
+                </div>
+              </form>
+            </div>
+            <div class="flex">
+              <div className="z-10">
+                <Image
+                  className="rounded-2xl"
+                  src="https://via.placeholder.com/500"
+                  width={300}
+                  height={300}
+                />
+              </div>
+              <div className="border w-full h-full z-0 border-black"></div>
+            </div>
+          </article>
+        </section>
+        <section className="bg-gray-100">
+          <div className="flex py-10 mx-20 justify-between">
+            <h1 className="text-4xl">Get choice of your course</h1>
+            <div className="flex space-x-10 items-center">
+              <p className="capitalize text-gray-500">Design</p>
+              <button className="items-center rounded-md flex text-white p-5 h-10 bg-red-500">
+                View all
+              </button>
+            </div>
+          </div>
+          <article className="grid grid-cols-3 gap-5 mx-20 pb-20">
+            {courses.map((x, index) => (
+              <Course key={index} course={x} />
+            ))}
+          </article>
+        </section>
+        <section className="flex flex-col bg-white px-20">
+          <div className="flex justify-between py-10">
+            <h1 className="font-medium text-3xl">
+              Choose favourite course from top category
+            </h1>
+            <button className="bg-red-500 rounded-lg text-white p-3">
+              See all Categories
+            </button>
+          </div>
+          <div className="pb-20 grid grid-cols-4 gap-5">
+            {categories.map((x, index) => (
+              <Category key={index} category={x} />
+            ))}
+          </div>
+        </section>
+        <section className="bg-red-200 flex flex-col items-center space-y-10 justify-center p-20">
+          <h1 className="text-4xl font-medium capitalize">
+            online coaching lessons for remote learning
+          </h1>
+          <p className="text-xl text-gray-600">
+            100% online learning from the world's best universities and
+            companies
+          </p>
+          <button className="bg-red-500 rounded-lg text-white p-3">
+            Join Today
+          </button>
+        </section>
+        <section className="bg-white flex justify-between p-20">
+          <article className="flex flex-col max-w-lg space-y-10">
+            <h1 className="text-3xl">
+              Know about our learning learning platform
+            </h1>
+            <p className="text-gray-500">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.{" "}
             </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+            <ul>
+              {badges.map((x, index) => (
+                <div className="flex items-center space-x-4">
+                  <BadgeCheckIcon className="text-green-600 h-5" />
+                  <li className="capitalize" key={index}>
+                    {x}
+                  </li>
+                </div>
+              ))}
+            </ul>
+            <button className="bg-red-500 rounded-lg w-48 text-white p-2">
+              Start learning now
+            </button>
+          </article>
+          <div className="hidden lg:inline-block">
+            <Image
+              className="rounded-tr-[150px]"
+              src="https://via.placeholder.com/400"
+              width={400}
+              height={400}
+            />
+          </div>
+        </section>
+        <section className="flex bg-gray-100 flex-col p-20 space-y-20">
+          <div className="flex items-center justify-between">
+            <h1 className="text-4xl">What our students have to say</h1>
+            <div className="flex space-x-3">
+              <div className="flex items-center h-10 w-10 justify-center bg-white">
+                <ArrowLeftIcon className="text-gray-500 h-5 hover:text-yellow-500" />
+              </div>
+              <div className="flex items-center h-10 w-10  justify-center bg-white">
+                <ArrowRightIcon className="text-gray-500 h-5 hover:text-yellow-500" />
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-5">
+            {reviews.map((x, index) => (
+              <Review key={index} review={x} />
+            ))}
+          </div>
+        </section>
+        <section className="flex bg-white flex-col p-20 space-y-20">
+          <div className="flex items-center justify-between">
+            <h1 className="text-4xl">Trusted by our awesome partners</h1>
+            <div className="flex space-x-3">
+              <div className="flex items-center h-10 w-10 justify-center bg-gray-300">
+                <ArrowLeftIcon className="text-gray-500 h-5 hover:text-yellow-500" />
+              </div>
+              <div className="flex items-center h-10 w-10  justify-center bg-gray-300">
+                <ArrowRightIcon className="text-gray-500 h-5 hover:text-yellow-500" />
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-6 gap-5">
+            {[...Array(5)].map((index) => (
+              <div key={index} className="bg-gray-300 w-40 h-20 " />
+            ))}
+          </div>
+        </section>
       </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+      <Footer />
     </div>
-  )
+  );
 }
